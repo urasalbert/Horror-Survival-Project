@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class InventorySystem : MonoBehaviour
@@ -13,11 +14,13 @@ public class InventorySystem : MonoBehaviour
     //public bool isFull;
 
     public List<GameObject> slotList = new List<GameObject>();
-    public List<string> itemList =new List<string>();
+    public List<string> itemList = new List<string>();
 
     private GameObject itemToAdd;
     private GameObject whatSlotsToEquip;
 
+    public GameObject pickupAlert;
+    public TextMeshProUGUI pickupName;
     private void Awake() //diðer scriplerden eriþim
     {
         if (Instance != null && Instance != this)
@@ -33,7 +36,7 @@ public class InventorySystem : MonoBehaviour
 
     void Start()
     {
-        isOpen = false;       
+        isOpen = false;
         PopulateSlotList();
     }
 
@@ -41,7 +44,7 @@ public class InventorySystem : MonoBehaviour
     {
         foreach (Transform child in inventoryScreenUI.transform)// inv slotlarýnýn üzerinde gezip liste eklemek için
         {
-            if(child.CompareTag("Slot"))//tag ile diger objeleri es geçiyoruz
+            if (child.CompareTag("Slot"))//tag ile diger objeleri es geçiyoruz
             {
                 slotList.Add(child.gameObject);
             }
@@ -72,25 +75,34 @@ public class InventorySystem : MonoBehaviour
 
     public void AddToInventory(string itemName)
     {
-            whatSlotsToEquip = FindNextEmptySlot();
-            itemToAdd = Instantiate(Resources.Load<GameObject>(itemName), whatSlotsToEquip.transform.position, whatSlotsToEquip.transform.rotation);
-            itemToAdd.transform.SetParent(whatSlotsToEquip.transform);
+        whatSlotsToEquip = FindNextEmptySlot();
+        itemToAdd = Instantiate(Resources.Load<GameObject>(itemName), whatSlotsToEquip.transform.position, whatSlotsToEquip.transform.rotation);
+        itemToAdd.transform.SetParent(whatSlotsToEquip.transform);
 
-            itemList.Add(itemName);        
+        itemList.Add(itemName);
+        TriggerPickUpPopUp(itemName);
     }
+
+
+    void TriggerPickUpPopUp(string itemName)
+    {
+        pickupAlert.SetActive(true);
+        pickupName.text = itemName + " picked up!";
+    }
+
     public bool CheckIfFull()
     {
         int counter = 0;
-        foreach(GameObject slot in slotList)
+        foreach (GameObject slot in slotList)
         {
-            if (slot.transform.childCount>0)
+            if (slot.transform.childCount > 0)
             {
                 counter++;
-            }       
+            }
         }
-        if (counter == 18) // envanter slot sayýsý dolana kadar döndür
+        if (counter == 10) // envanter slot sayýsý dolana kadar döndür
         {
-            return true;//18 slot doluysa true dondür
+            return true;//4 slot doluysa true dondür
         }
         else
         {
@@ -100,9 +112,9 @@ public class InventorySystem : MonoBehaviour
 
     private GameObject FindNextEmptySlot()//listede slot aranýr slot child yoksa empty demek degeri dondurur
     {
-        foreach(GameObject slot in slotList)
+        foreach (GameObject slot in slotList)
         {
-            if(slot.transform.childCount == 0)
+            if (slot.transform.childCount == 0)
             {
                 return slot;
             }

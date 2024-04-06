@@ -9,6 +9,7 @@ public class EnemyAI : MonoBehaviour
     public NavMeshAgent ai;
     public List<Transform> destinations;
     //public Animator aiAnim;
+    public Animation anim;
     public float walkSpeed, chaseSpeed, minIdleTime, maxIdleTime, idleTime, sightDistance, catchDistance, chaseTime, minChaseTime, maxChaseTime, jumpscareTime;
     public bool walking, chasing;
     public Transform player;
@@ -45,6 +46,7 @@ public class EnemyAI : MonoBehaviour
             dest = player.position;
             ai.destination = dest;
             ai.speed = chaseSpeed;
+            anim.Play("Run");
             //aiAnim.ResetTrigger("walk");
             //aiAnim.ResetTrigger("idle");
             //aiAnim.SetTrigger("sprint");
@@ -65,6 +67,7 @@ public class EnemyAI : MonoBehaviour
             dest = currentDest.position;
             ai.destination = dest;
             ai.speed = walkSpeed;
+            anim.Play("Walk");
             //aiAnim.ResetTrigger("sprint");
             //aiAnim.ResetTrigger("idle");
             //aiAnim.SetTrigger("walk");
@@ -73,6 +76,7 @@ public class EnemyAI : MonoBehaviour
                 //aiAnim.ResetTrigger("sprint");
                 //aiAnim.ResetTrigger("walk");
                 //aiAnim.SetTrigger("idle");
+                anim.Play("Idle");
                 ai.speed = 0;
                 StopCoroutine("stayIdle");
                 StartCoroutine("stayIdle");
