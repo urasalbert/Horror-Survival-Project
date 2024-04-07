@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -12,6 +10,8 @@ public class InventorySystem : MonoBehaviour
     public GameObject inventoryScreenUI;
     public bool isOpen;
     //public bool isFull;
+    public GameObject pickupAlert;
+    public TextMeshProUGUI pickupAlertText;
 
     public List<GameObject> slotList = new List<GameObject>();
     public List<string> itemList = new List<string>();
@@ -19,8 +19,6 @@ public class InventorySystem : MonoBehaviour
     private GameObject itemToAdd;
     private GameObject whatSlotsToEquip;
 
-    public GameObject pickupAlert;
-    public TextMeshProUGUI pickupName;
     private void Awake() //diðer scriplerden eriþim
     {
         if (Instance != null && Instance != this)
@@ -32,7 +30,11 @@ public class InventorySystem : MonoBehaviour
             Instance = this;
         }
     }
-
+    void TriggerPopUp(string itemName)
+    {
+        pickupAlert.SetActive(true);
+        pickupAlertText.text = itemName + " picked up!";
+    }
 
     void Start()
     {
@@ -79,15 +81,8 @@ public class InventorySystem : MonoBehaviour
         itemToAdd = Instantiate(Resources.Load<GameObject>(itemName), whatSlotsToEquip.transform.position, whatSlotsToEquip.transform.rotation);
         itemToAdd.transform.SetParent(whatSlotsToEquip.transform);
 
+        TriggerPopUp(itemName);
         itemList.Add(itemName);
-        TriggerPickUpPopUp(itemName);
-    }
-
-
-    void TriggerPickUpPopUp(string itemName)
-    {
-        pickupAlert.SetActive(true);
-        pickupName.text = itemName + " picked up!";
     }
 
     public bool CheckIfFull()
@@ -100,9 +95,9 @@ public class InventorySystem : MonoBehaviour
                 counter++;
             }
         }
-        if (counter == 10) // envanter slot sayýsý dolana kadar döndür
+        if (counter == 4) // envanter slot sayýsý dolana kadar döndür
         {
-            return true;//4 slot doluysa true dondür
+            return true;//18 slot doluysa true dondür
         }
         else
         {

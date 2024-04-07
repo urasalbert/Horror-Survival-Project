@@ -29,7 +29,6 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
         Debug.Log("OnBeginDrag");
         canvasGroup.alpha = .6f;
-        //So the ray cast will ignore the item itself.
         canvasGroup.blocksRaycasts = false;
         startPosition = transform.position;
         startParent = transform.parent;
@@ -40,7 +39,6 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
     public void OnDrag(PointerEventData eventData)
     {
-        //So the item will move with our mouse (at same speed)  and so it will be consistant if the canvas has a different scale (other then 1);
         rectTransform.anchoredPosition += eventData.delta;
 
     }
