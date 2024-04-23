@@ -8,7 +8,6 @@ public class EnemyAI : MonoBehaviour
 {
     public NavMeshAgent ai;
     public List<Transform> destinations;
-    //public Animator aiAnim;
     public Animation anim;
     public float walkSpeed, chaseSpeed, minIdleTime, maxIdleTime, idleTime, sightDistance, catchDistance, chaseTime, minChaseTime, maxChaseTime, jumpscareTime;
     public bool walking, chasing;
@@ -47,18 +46,11 @@ public class EnemyAI : MonoBehaviour
             ai.destination = dest;
             ai.speed = chaseSpeed;
             anim.Play("Run");
-            //aiAnim.ResetTrigger("walk");
-            //aiAnim.ResetTrigger("idle");
-            //aiAnim.SetTrigger("sprint");
+
             float distance = Vector3.Distance(player.position, ai.transform.position);
             if (distance <= catchDistance)
             {
                 player.gameObject.SetActive(false);
-                //aiAnim.ResetTrigger("walk");
-                //aiAnim.ResetTrigger("idle");
-                //aiAnim.ResetTrigger("sprint");
-                //aiAnim.SetTrigger("jumpscare");
-                //StartCoroutine(deathRoutine());
                 chasing = false;
             }
         }
@@ -68,14 +60,9 @@ public class EnemyAI : MonoBehaviour
             ai.destination = dest;
             ai.speed = walkSpeed;
             anim.Play("Walk");
-            //aiAnim.ResetTrigger("sprint");
-            //aiAnim.ResetTrigger("idle");
-            //aiAnim.SetTrigger("walk");
+
             if (ai.remainingDistance <= ai.stoppingDistance)
             {
-                //aiAnim.ResetTrigger("sprint");
-                //aiAnim.ResetTrigger("walk");
-                //aiAnim.SetTrigger("idle");
                 anim.Play("Idle");
                 ai.speed = 0;
                 StopCoroutine("stayIdle");
