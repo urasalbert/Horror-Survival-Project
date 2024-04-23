@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements.Experimental;
 using static PlayerMovement;
 
 public class CoilHeadEnemy : MonoBehaviour
@@ -9,18 +10,18 @@ public class CoilHeadEnemy : MonoBehaviour
     {
         Idle, Chase, Attack
     }
-     private EnemyState state;
-     private Transform targetTransform;
+
+    [SerializeField] private EnemyState state;
+    [SerializeField] private Transform targetTransform;
     [SerializeField] private NavMeshAgent navMeshAgent;
     [SerializeField] Renderer renderer;
     [SerializeField] Transform player;
+    [SerializeField] private float catchDistance;
 
     private Animator animator;
     private void Awake()
     {
-        navMeshAgent = GetComponent<NavMeshAgent>();
         targetTransform = player.transform;
-        animator = GetComponentInChildren<Animator>();
     }
 
 
@@ -37,6 +38,13 @@ public class CoilHeadEnemy : MonoBehaviour
             case EnemyState.Attack:
 
                 break;
+        }
+
+        float distance = Vector3.Distance(player.position, navMeshAgent.transform.position);
+        if (distance <= catchDistance)
+        {
+            player.gameObject.SetActive(false);      
+            //die script here
         }
     }
 
@@ -72,7 +80,7 @@ public class CoilHeadEnemy : MonoBehaviour
         {
             if (hit.collider != null)
             {
-                    return false;
+                return false;
             }
         }
         return true;
