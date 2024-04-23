@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements.Experimental;
@@ -17,11 +18,13 @@ public class CoilHeadEnemy : MonoBehaviour
     [SerializeField] Renderer renderer;
     [SerializeField] Transform player;
     [SerializeField] private float catchDistance;
+    [SerializeField] private float chaseTimeMax, chaseTimeMin, chaseTime;
 
     private Animator animator;
     private void Awake()
     {
         targetTransform = player.transform;
+        
     }
 
 
@@ -39,6 +42,7 @@ public class CoilHeadEnemy : MonoBehaviour
 
                 break;
         }
+        //StartCoroutine("dropTracking");
 
         float distance = Vector3.Distance(player.position, navMeshAgent.transform.position);
         if (distance <= catchDistance)
@@ -65,6 +69,7 @@ public class CoilHeadEnemy : MonoBehaviour
         else
         {
             Debug.LogError("No Player Reference");
+            
         }
     }
 
@@ -95,5 +100,14 @@ public class CoilHeadEnemy : MonoBehaviour
             return true;
         }
         return false;
+
     }
+
+    /*IEnumerator dropTracking()
+    {
+        chaseTime = UnityEngine.Random.Range(chaseTimeMin, chaseTimeMax);
+        yield return new WaitForSeconds(chaseTime);
+        state = EnemyState.Idle;
+
+    }*/
 }
