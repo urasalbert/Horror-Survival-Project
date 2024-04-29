@@ -7,8 +7,9 @@ public class TextColorChanger : MonoBehaviour
 {
     public Color hoveringColor;
     public Color normalColor;
-    public TextMeshProUGUI NewGameText;
+    public TextMeshProUGUI NewGameText;//might use later for other screens name is not important
     public TextMeshProUGUI ExitText;
+    public TextMeshProUGUI SaveText;
 
     public void HoveringNewGameColor()
     {
@@ -26,5 +27,12 @@ public class TextColorChanger : MonoBehaviour
     {
         ExitText.color = normalColor;
     }
-
+    public void SaveGameHoveringColor()
+    {
+        SaveText.color = hoveringColor;
+    }
+    public void LeaveSaveGameColor()
+    {
+        SaveText.color = normalColor;
+    }
 }

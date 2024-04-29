@@ -7,7 +7,7 @@ public class FPSCam : MonoBehaviour
     public Transform player;
     public float mouseSensitivity = 2f;
     float cameraVerticalRotation = 0;
-
+    
     void Start()
     {
         Cursor.visible = false;
@@ -16,7 +16,7 @@ public class FPSCam : MonoBehaviour
 
     void Update()
     {
-        if(InventorySystem.Instance.isOpen == false)
+        if (InventorySystem.Instance.isOpen == false && PauseScreenManager.Instance.isGamePaused == false)//if inventory closed and game not paused 
         {
             float inputX = Input.GetAxis("Mouse X") * mouseSensitivity;
             float inputY = Input.GetAxis("Mouse Y") * mouseSensitivity;
