@@ -15,13 +15,15 @@ public class InteractableObject : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && playerInRange && SelectionManager.Instance.onTarget && SelectionManager.Instance.selectedObject == gameObject)
+        if (Input.GetKeyDown(KeyCode.E) && playerInRange && SelectionManager.Instance.onTarget &&
+            SelectionManager.Instance.selectedObject == gameObject)
         {
-            //envanter dolu deðilse
-            if(!InventorySystem.Instance.CheckIfFull())
+            //if inv not full
+            if (!InventorySystem.Instance.CheckIfFull())
             {
-                InventorySystem.Instance.AddToInventory(ItemName);//envanter dolu deðilse týklanan itemi envantere ekle
-                Destroy(gameObject);
+                    InventorySystem.Instance.AddToInventory(ItemName);//if inv not full add this item to inv
+                    Destroy(gameObject);
+
             }
             else
             {
@@ -36,7 +38,7 @@ public class InteractableObject : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
-            
+
         }
     }
 

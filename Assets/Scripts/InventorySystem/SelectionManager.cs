@@ -18,7 +18,7 @@ public class SelectionManager : MonoBehaviour
         interaction_text = interaction_Info_UI.GetComponent<TextMeshProUGUI>();
     }
 
-    private void Awake()//diger scriptlerden erisim icin
+    private void Awake()
     {
         if(Instance != null && Instance!=this) 
         {
