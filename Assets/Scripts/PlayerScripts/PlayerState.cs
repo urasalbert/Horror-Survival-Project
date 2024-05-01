@@ -9,6 +9,7 @@ public class PlayerState : MonoBehaviour
 
     public float currentHealth;
     public float maxHealth;
+
     private void Awake()
     {
         if(Instance != null && Instance !=this)

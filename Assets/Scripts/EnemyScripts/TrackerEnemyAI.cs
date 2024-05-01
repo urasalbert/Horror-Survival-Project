@@ -11,7 +11,8 @@ public class CoilHeadEnemy : MonoBehaviour
     {
         Idle, Chase, Attack
     }
-
+    public Collider damageCollider;
+    public Collider sightCollider;
     [SerializeField] private EnemyState state;
     [SerializeField] private Transform targetTransform;
     [SerializeField] private NavMeshAgent navMeshAgent;
@@ -24,7 +25,7 @@ public class CoilHeadEnemy : MonoBehaviour
     private void Awake()
     {
         targetTransform = player.transform;
-        
+
     }
 
 
@@ -39,16 +40,14 @@ public class CoilHeadEnemy : MonoBehaviour
                 HandleChase();
                 break;
             case EnemyState.Attack:
-
+                
                 break;
         }
-        //StartCoroutine("dropTracking");
 
         float distance = Vector3.Distance(player.position, navMeshAgent.transform.position);
         if (distance <= catchDistance)
         {
-            player.gameObject.SetActive(false);      
-            //die script here
+            AttackPlayer();
         }
     }
 
@@ -56,7 +55,7 @@ public class CoilHeadEnemy : MonoBehaviour
     {
         if (targetTransform != null)
         {
-            if (!IsInLineOfSight() || IsBehindWalls())
+            if (!IsInLineOfSight())
             {
                 navMeshAgent.SetDestination(targetTransform.position);
             }
@@ -66,14 +65,9 @@ public class CoilHeadEnemy : MonoBehaviour
             }
 
         }
-        else
-        {
-            Debug.LogError("No Player Reference");
-            
-        }
     }
 
-    private bool IsBehindWalls()
+    /*private bool IsBehindWalls()
     {
         Ray ray = new Ray();
         ray.origin = transform.position;
@@ -89,7 +83,7 @@ public class CoilHeadEnemy : MonoBehaviour
             }
         }
         return true;
-    }
+    }*/
 
     private bool IsInLineOfSight()
     {
@@ -103,11 +97,24 @@ public class CoilHeadEnemy : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            state = EnemyState.Chase;
+
+        }
+    }
+    public void AttackPlayer()
+    {
+        PlayerState.Instance.currentHealth -= 80;
+    }
+
     /*IEnumerator dropTracking()
     {
-        chaseTime = UnityEngine.Random.Range(chaseTimeMin, chaseTimeMax);
-        yield return new WaitForSeconds(chaseTime);
-        state = EnemyState.Idle;
+    chaseTime = UnityEngine.Random.Range(chaseTimeMin, chaseTimeMax);
+    yield return new WaitForSeconds(chaseTime);
+    state = EnemyState.Idle;
 
     }*/
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
@@ -18,6 +19,10 @@ public class EnemyAI : MonoBehaviour
     public int destinationAmount;
     public Vector3 rayCastOffset;
     public string deathScene;
+    public GameObject PlayerObject;
+    public float attackInterval = 3f;
+    private bool isAttacking = false;
+    private bool hasAttacked = false;
 
     void Start()
     {
@@ -31,7 +36,7 @@ public class EnemyAI : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position + rayCastOffset, direction, out hit, sightDistance))
         {
-            if (hit.collider.gameObject.tag == "Player")
+            if (!isAttacking && hit.collider.gameObject.tag == "Player")
             {
                 walking = false;
                 StopCoroutine("stayIdle");
@@ -39,6 +44,16 @@ public class EnemyAI : MonoBehaviour
                 StartCoroutine("chaseRoutine");
                 chasing = true;
             }
+        }
+        if (hasAttacked == true)
+        {
+            walking = false;
+            chasing = false;
+            StopCoroutine("stayIdle");
+            StartCoroutine("stayIdle");
+            anim.Play("Idle");
+            ai.speed = 0;
+
         }
         if (chasing == true)
         {
@@ -71,6 +86,38 @@ public class EnemyAI : MonoBehaviour
             }
         }
     }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            AttackPlayer();
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isAttacking = false;
+        }
+    }
+    public void AttackPlayer()//attack and reset hasattacked for anim and positions
+    {
+        isAttacking = true;
+
+        if (!hasAttacked)
+        {
+            hasAttacked = true;
+            PlayerState.Instance.currentHealth -= 50;//ghoul damage value
+            StartCoroutine(ResetHasAttacked());
+        }
+    }
+
+    IEnumerator ResetHasAttacked()
+    {
+        yield return new WaitForSeconds(5f);
+        hasAttacked = false;
+    }
+
     IEnumerator stayIdle()
     {
         idleTime = Random.Range(minIdleTime, maxIdleTime);
