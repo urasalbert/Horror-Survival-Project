@@ -107,7 +107,7 @@ public class CoilHeadEnemy : MonoBehaviour
     }
     public void AttackPlayer()
     {
-        PlayerState.Instance.currentHealth -= 80;
+        PlayerState.Instance.TakeDamage(100);
     }
 
     /*IEnumerator dropTracking()

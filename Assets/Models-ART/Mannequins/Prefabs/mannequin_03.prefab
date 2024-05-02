@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2561498971413015310}
   - component: {fileID: 6146114145964950875}
   - component: {fileID: 5935325633959416809}
+  - component: {fileID: 5830996485378725629}
   m_Layer: 0
   m_Name: mannequin_03
   m_TagString: Untagged
@@ -125,12 +126,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9b32ad36eb3bd246b30d59e2ddf34cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageCollider: {fileID: 0}
+  sightCollider: {fileID: 5830996485378725629}
   state: 0
   targetTransform: {fileID: 0}
   navMeshAgent: {fileID: 2561498971413015310}
   renderer: {fileID: 2300000}
   player: {fileID: 0}
-  catchDistance: 0
+  catchDistance: 2
+  chaseTimeMax: 5
+  chaseTimeMin: 1
+  chaseTime: 0
 --- !u!136 &5935325633959416809
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -154,6 +160,27 @@ CapsuleCollider:
   m_Height: 1.83
   m_Direction: 1
   m_Center: {x: 0.0032621995, y: -0.33, z: -0.086566135}
+--- !u!65 &5830996485378725629
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.25, y: 4.17, z: 7.4}
+  m_Center: {x: 0.0032621992, y: 0.3, z: -0.43}
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0

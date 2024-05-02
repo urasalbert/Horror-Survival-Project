@@ -23,9 +23,11 @@ public class EnemyAI : MonoBehaviour
     public float attackInterval = 3f;
     private bool isAttacking = false;
     private bool hasAttacked = false;
+    [SerializeField] private CanvasGroup HurtCanvas;
 
     void Start()
     {
+        HurtCanvas.alpha = 0;
         walking = true;
         randNum = Random.Range(0, destinations.Count);
         currentDest = destinations[randNum];
@@ -107,15 +109,23 @@ public class EnemyAI : MonoBehaviour
         if (!hasAttacked)
         {
             hasAttacked = true;
-            PlayerState.Instance.currentHealth -= 50;//ghoul damage value
+            PlayerState.Instance.TakeDamage(50);//ghoul damage value
+            StartCoroutine(HurtFlash());
             StartCoroutine(ResetHasAttacked());
         }
     }
 
+    IEnumerator HurtFlash()
+    {
+        Fader.Instance.ShowIU();
+        yield return new WaitForSeconds(1f);
+        Fader.Instance.HideUI();
+    }
     IEnumerator ResetHasAttacked()
     {
         yield return new WaitForSeconds(5f);
         hasAttacked = false;
+        
     }
 
     IEnumerator stayIdle()
