@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 1d9fc7bc40f31bf4bac643251dc16c4e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - AudioSource: {instanceID: 0}
+  - footstep1: {fileID: 8300000, guid: 397781730cdd28a4390753b5192fc881, type: 3}
+  - footstep2: {fileID: 8300000, guid: d20c1f5c180eed34892784cea8f92cb8, type: 3}
+  - footstep3: {instanceID: 0}
+  - footstep4: {instanceID: 0}
+  - footstep5: {instanceID: 0}
+  - footstep6: {instanceID: 0}
+  - footstep7: {instanceID: 0}
+  - footstep8: {instanceID: 0}
+  - footstep9: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
