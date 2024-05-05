@@ -11,17 +11,14 @@ public class CoilHeadEnemy : MonoBehaviour
     {
         Idle, Chase, Attack
     }
-    public Collider damageCollider;
-    public Collider sightCollider;
+
     [SerializeField] private EnemyState state;
     [SerializeField] private Transform targetTransform;
     [SerializeField] private NavMeshAgent navMeshAgent;
     [SerializeField] Renderer renderer;
     [SerializeField] Transform player;
     [SerializeField] private float catchDistance;
-    [SerializeField] private float chaseTimeMax, chaseTimeMin, chaseTime;
 
-    private Animator animator;
     private void Awake()
     {
         targetTransform = player.transform;
@@ -49,6 +46,11 @@ public class CoilHeadEnemy : MonoBehaviour
         {
             AttackPlayer();
         }
+
+        if(TrackerRaycast.Instance.isEnemySighted == true)
+        {
+            state = EnemyState.Chase;
+        }
     }
 
     private void HandleChase()
@@ -57,10 +59,12 @@ public class CoilHeadEnemy : MonoBehaviour
         {
             if (!IsInLineOfSight())
             {
+                navMeshAgent.speed = 15f;
                 navMeshAgent.SetDestination(targetTransform.position);
             }
             else
             {
+                navMeshAgent.speed = 0f;
                 navMeshAgent.SetDestination(transform.position);
             }
 
@@ -97,14 +101,15 @@ public class CoilHeadEnemy : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             state = EnemyState.Chase;
 
         }
-    }
+    }*/
+
     public void AttackPlayer()
     {
         PlayerState.Instance.TakeDamage(100);

@@ -8,6 +8,7 @@ public class StopBreathingWhileAttacking : MonoBehaviour
 
     public AudioSource AudioSource;
     public AudioClip AudioClip;
+   
 
     void Awake()
     {
@@ -26,6 +27,7 @@ public class StopBreathingWhileAttacking : MonoBehaviour
         AudioSource.Stop();
         AudioSource.clip = AudioClip;
         AudioSource.Play();
+
     }
     public void StopIdleSound()
     {
