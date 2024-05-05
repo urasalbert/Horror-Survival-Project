@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if(PlayerState.Instance.currentHealth <= 0)
+        if(PlayerState.Instance.currentHealth  == 999)
         {
             GameFinisher();
         }
