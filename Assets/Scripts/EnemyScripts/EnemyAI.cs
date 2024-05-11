@@ -95,13 +95,15 @@ public class EnemyAI : MonoBehaviour
                 walking = false;
             }
         }
-        if (chasing && !ChasingMusic.Instance.backgroundMusic.isPlaying && ChasingMusic.Instance.backgroundMusic.clip != ChasingMusic.Instance.chaseMusic)
+        if (chasing && !ChasingMusic.Instance.isPlaying)
         {
+            Debug.Log("Chasing Music (might already be playing)");
             ChasingMusic.Instance.PlayChaseMusic();
         }
         else if (!chasing && ChasingMusic.Instance.backgroundMusic.clip == ChasingMusic.Instance.chaseMusic)
         {
-            ChasingMusic.Instance.StopChaseMusicWithFade();
+            ChasingMusic.Instance.StopChaseMusic(true);
+
         }
         if(ai.speed != 0 && ai.speed != walkSpeed)//stop idle sound
         {
@@ -154,7 +156,8 @@ public class EnemyAI : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         hasAttacked = false;
-        
+        chasing = false;
+
     }
 
     IEnumerator stayIdle()

@@ -32,7 +32,12 @@ public class SelectionManager : MonoBehaviour
 
     void Update()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Vector3 centerScreenPoint = new Vector3(800 / 2, 600 / 2, 0);
+
+        Ray ray = Camera.main.ScreenPointToRay(centerScreenPoint);
+
+        Debug.DrawRay(ray.origin, ray.direction * 100f, Color.red);
+
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {

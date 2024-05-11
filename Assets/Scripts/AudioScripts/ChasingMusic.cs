@@ -11,8 +11,9 @@ public class ChasingMusic : MonoBehaviour
     public AudioSource backgroundMusic;
     public AudioClip chaseMusic;
     public AudioClip breathingSound;
-    [NonSerialized]public float fadeOutDuration = 1.0f;
+    [SerializeField] public float fadeOutDuration = 1.0f; // Make fade duration configurable
     private Coroutine fadeOutCoroutine;
+    public bool isPlaying;
 
     private void Awake()
     {
@@ -24,6 +25,12 @@ public class ChasingMusic : MonoBehaviour
         {
             Instance = this;
         }
+
+        // Check if backgroundMusic is assigned
+        if (backgroundMusic == null)
+        {
+            Debug.LogWarning("ChasingMusic: backgroundMusic not assigned!");
+        }
     }
 
     public void PlayChaseMusic()
@@ -31,15 +38,22 @@ public class ChasingMusic : MonoBehaviour
         backgroundMusic.Stop();
         backgroundMusic.clip = chaseMusic;
         backgroundMusic.Play();
+        isPlaying = true;
     }
 
-    public void StopChaseMusicWithFade()
+    public void StopChaseMusic(bool fadeOut)
     {
-        if (fadeOutCoroutine != null)
-        {
-            StopCoroutine(fadeOutCoroutine);
+        if (fadeOut)
+        {           
+            if (fadeOutCoroutine == null)
+            {
+                fadeOutCoroutine = StartCoroutine(FadeOutMusic());
+            }
         }
-        fadeOutCoroutine = StartCoroutine(FadeOutMusic());
+        else
+        {
+            backgroundMusic.Stop();
+        }
     }
 
     private IEnumerator FadeOutMusic()
@@ -55,7 +69,9 @@ public class ChasingMusic : MonoBehaviour
         }
 
         backgroundMusic.Stop();
+        isPlaying = false;
         backgroundMusic.volume = startVolume;
     }
 }
+
 

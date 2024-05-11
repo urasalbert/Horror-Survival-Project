@@ -1,0 +1,344 @@
+fileFormatVersion: 2
+guid: 0333532b3dd93ae4b8bd8c0c9fbd648f
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DoorHandle
+    second: {fileID: 2100000, guid: 1008f4bf06bb4b34ebfc61002f6df76b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DoorPaddingWhite
+    second: {fileID: 2100000, guid: 86c58864a8360374cae58e1c51564c37, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding
+    second: {fileID: 2100000, guid: 68257e83bd12aa9428dc09dfe89bc427, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.001
+    second: {fileID: 2100000, guid: c61927f7be742c04d8a44de741b549d1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.002
+    second: {fileID: 2100000, guid: 65f599210b8521a4eaca175448273c97, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.003
+    second: {fileID: 2100000, guid: e6198a4910b9d214aa9e58456d5f5688, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.004
+    second: {fileID: 2100000, guid: 22ae6b76a09f2f2448b0b513257bcace, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.005
+    second: {fileID: 2100000, guid: 84e0f4ef6dbd3604998d2b0b98396912, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.006
+    second: {fileID: 2100000, guid: fc1e898be5111d543886f010f4a27333, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.007
+    second: {fileID: 2100000, guid: 51653c0305fec8944af9aad089a46bbf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.008
+    second: {fileID: 2100000, guid: ceef1faa7021c2744a944fc5179c3f3c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.009
+    second: {fileID: 2100000, guid: c86dcd3ba0bfece42a50f2390d406626, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.010
+    second: {fileID: 2100000, guid: 477f0424f49442d4182bcc2ad8b0f21c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.011
+    second: {fileID: 2100000, guid: 3a1abb8139710f848a5ec19028b05dac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.012
+    second: {fileID: 2100000, guid: c19e62039392d2446ab7828783ab1bac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.013
+    second: {fileID: 2100000, guid: 44104234a8043d9408b22b190699fc22, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.014
+    second: {fileID: 2100000, guid: 1182663a967d7d042864e520b05fa089, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.015
+    second: {fileID: 2100000, guid: 81da364cc514b0b40b6e98e990a99906, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.016
+    second: {fileID: 2100000, guid: a5fadd1e2a595dd4fb8efa6fbd497157, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.017
+    second: {fileID: 2100000, guid: 218a1d58f3b5d764da6d29cb50d1895b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.018
+    second: {fileID: 2100000, guid: 07223091e90cbfd4fb3d6d1f2d3d75bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.019
+    second: {fileID: 2100000, guid: c4cd4d509ae75514d940bdd609f70217, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.020
+    second: {fileID: 2100000, guid: e63d989b1be58324e8b0299b956dc494, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.021
+    second: {fileID: 2100000, guid: 06a9ed4a1229e394d8e7645eb9f966d3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.022
+    second: {fileID: 2100000, guid: 618d81fd8d479544c82461589a16ed36, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.023
+    second: {fileID: 2100000, guid: 078731381eb82934a88bab2a96e925a3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.024
+    second: {fileID: 2100000, guid: 78536c2d6a2c1224586ef6311a098b03, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.025
+    second: {fileID: 2100000, guid: 69fb3a0c8295bda4085817a5372fc82a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.026
+    second: {fileID: 2100000, guid: dbf56b5c094a70741a48445a7ba8d578, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.027
+    second: {fileID: 2100000, guid: 8c948ebe0be57dc4fa8f4a8f61e344f5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.028
+    second: {fileID: 2100000, guid: 6812776670dcc8e4e9505a96e6843005, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.029
+    second: {fileID: 2100000, guid: 24e53b0bedd0e9f4b8d938ce38beaeaf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.030
+    second: {fileID: 2100000, guid: 996dee66e5201b848acffc327a25bbbb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.031
+    second: {fileID: 2100000, guid: baabf4dce68a5584986944e0b23cc764, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.032
+    second: {fileID: 2100000, guid: 05ab45c0dc3248349b9ac15b871df7b0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.033
+    second: {fileID: 2100000, guid: 3974ba4fd376d0f41af8f274848d15d8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.034
+    second: {fileID: 2100000, guid: 5865abe53460fe647877fd58b738f4c1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.035
+    second: {fileID: 2100000, guid: 3558e67fa06ae1a4aa337baac567cccc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.036
+    second: {fileID: 2100000, guid: c00bb47e8e7f421478c656866bae293e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.037
+    second: {fileID: 2100000, guid: 4b2754e04194bdf4288e82c0a2b5b9a5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePadding.038
+    second: {fileID: 2100000, guid: 1b04aa9d721f658408f2b97a1e44a91f, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: DoorHandleColor
+    second: {fileID: 2800000, guid: e0149a27a48c13949a1b488edab93f0b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: DoorHandleMetallic
+    second: {fileID: 2800000, guid: 1c5156381c057c44f93500f93364f90c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: DoorHandleNormal
+    second: {fileID: 2800000, guid: 86f35e3600390a445bdab6ce2f2c002d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: DoorHandleRoughness
+    second: {fileID: 2800000, guid: 358af88599c468a48986185a7ca79e16, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: DoorPaddingNormal
+    second: {fileID: 2800000, guid: a35149b4d36006547ab609c67c3f4ed7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: PaddedNormal
+    second: {fileID: 2800000, guid: 0f4f72800f0a03e4dba2bbde7f4a062a, type: 3}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
