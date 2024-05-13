@@ -9,6 +9,7 @@ public class TrackerRaycast : MonoBehaviour
 
     public float raycastDistance = 100f;
     public bool isEnemySighted;
+     public List<GameObject> trackedEnemies = new List<GameObject>();
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -26,7 +27,7 @@ public class TrackerRaycast : MonoBehaviour
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
 
         RaycastHit hit;
-  
+
         if (Physics.Raycast(ray, out hit, raycastDistance, ~LayerMask.GetMask("Trigger")))
         {
             if (hit.collider != null)

@@ -25,6 +25,7 @@ public class PaperCollector : MonoBehaviour
             collectedPaperCount++;
             Debug.Log("Collected Paper Count: " + collectedPaperCount);
             Destroy(other.gameObject);
+            PaperCollectionSound.Instance.PlayPaperSound();
         }
     }
 

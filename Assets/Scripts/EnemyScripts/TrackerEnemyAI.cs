@@ -71,23 +71,6 @@ public class CoilHeadEnemy : MonoBehaviour
         }
     }
 
-    /*private bool IsBehindWalls()
-    {
-        Ray ray = new Ray();
-        ray.origin = transform.position;
-        ray.direction = (targetTransform.position - transform.position).normalized;
-        RaycastHit hit;
-        float distance = Vector3.Distance(targetTransform.position, transform.position);
-
-        if (Physics.Raycast(ray, out hit, distance))
-        {
-            if (hit.collider != null)
-            {
-                return false;
-            }
-        }
-        return true;
-    }*/
 
     private bool IsInLineOfSight()
     {
@@ -101,25 +84,8 @@ public class CoilHeadEnemy : MonoBehaviour
 
     }
 
-    /*private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            state = EnemyState.Chase;
-
-        }
-    }*/
-
     public void AttackPlayer()
     {
         PlayerState.Instance.TakeDamage(100);
     }
-
-    /*IEnumerator dropTracking()
-    {
-    chaseTime = UnityEngine.Random.Range(chaseTimeMin, chaseTimeMax);
-    yield return new WaitForSeconds(chaseTime);
-    state = EnemyState.Idle;
-
-    }*/
 }
