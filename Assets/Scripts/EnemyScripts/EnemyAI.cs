@@ -43,7 +43,6 @@ public class EnemyAI : MonoBehaviour
         Vector3 direction = (player.position - transform.position).normalized;
         RaycastHit hit;
 
-
         if (Physics.Raycast(transform.position + rayCastOffset, direction, out hit, sightDistance))
         {
             if (hit.collider.gameObject.tag == "Player")
@@ -55,15 +54,17 @@ public class EnemyAI : MonoBehaviour
                 chasing = true;
             }
         }
-        if (hasAttacked == true)
+
+        if (hasAttacked)
         {
             walking = false;
             chasing = true;
             ai.speed = 0;
         }
-        if (chasing == true)
+
+        if (chasing)
         {
-            if(hasAttacked == false)
+            if (!hasAttacked)
             {
                 dest = player.position;
                 ai.destination = dest;
@@ -78,7 +79,7 @@ public class EnemyAI : MonoBehaviour
             }
         }
 
-        if (walking == true)
+        if (walking)
         {
             dest = currentDest.position;
             ai.destination = dest;
@@ -91,27 +92,22 @@ public class EnemyAI : MonoBehaviour
                 ai.speed = 0;
                 StopCoroutine("stayIdle");
                 StartCoroutine("stayIdle");
-                StopBreathingWhileAttacking.Instance.PlayIdleSound();
                 walking = false;
             }
         }
+
         if (chasing && !ChasingMusic.Instance.isPlaying)
         {
-            Debug.Log("Chasing Music (might already be playing)");
             ChasingMusic.Instance.PlayChaseMusic();
         }
-        else if (!chasing && ChasingMusic.Instance.backgroundMusic.clip == ChasingMusic.Instance.chaseMusic)
+        else if (!chasing && ChasingMusic.Instance.isPlaying)
         {
             ChasingMusic.Instance.StopChaseMusic(true);
-
         }
-        if(ai.speed != 0 && ai.speed != walkSpeed)//stop idle sound
-        {
-            StopBreathingWhileAttacking.Instance.StopIdleSound();
-        }
-
     }
-    
+
+
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

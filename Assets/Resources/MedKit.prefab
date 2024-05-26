@@ -120,3 +120,5 @@ MonoBehaviour:
   thisFunctionality: 
   isConsumable: 1
   healthEffect: 50
+  HealingAudioSource: {fileID: 0}
+  HealingAudioClip: {fileID: 8300000, guid: cc8c4222858f6634baf0aa2944c2c68d, type: 3}

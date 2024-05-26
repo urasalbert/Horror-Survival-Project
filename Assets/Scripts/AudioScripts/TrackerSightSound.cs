@@ -20,7 +20,6 @@ public class TrackerSightSound : MonoBehaviour
         {
             Instance = this;
         }
-        isPlayed = false;
     }
 
     public void PlaySightSound()
@@ -30,7 +29,6 @@ public class TrackerSightSound : MonoBehaviour
             AudioSource.Stop();
             AudioSource.clip = sightSoundEffect;
             AudioSource.Play();
-            isPlayed = true;
         }
     }
     public void StopSightSound()

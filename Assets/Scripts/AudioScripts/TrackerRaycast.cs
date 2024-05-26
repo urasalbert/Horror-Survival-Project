@@ -1,43 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Search;
 using UnityEngine;
 
-public class TrackerRaycast : MonoBehaviour
+public class PlayerRaycast : MonoBehaviour
 {
-    public static TrackerRaycast Instance { get; private set; }
+    [SerializeField] private float raycastDistance = 100f;
 
-    public float raycastDistance = 100f;
-    public bool isEnemySighted;
-     public List<GameObject> trackedEnemies = new List<GameObject>();
-    void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            Instance = this;
-        }
-        isEnemySighted = false;
-    }
     void Update()
     {
-        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+            RaycastHit hit;
 
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, raycastDistance, ~LayerMask.GetMask("Trigger")))
-        {
-            if (hit.collider != null)
+            if (Physics.Raycast(ray, out hit, raycastDistance, ~LayerMask.GetMask("Trigger")))
             {
-                if (hit.collider.gameObject.tag == "Tracker")
+                if (hit.collider != null)
                 {
-                    isEnemySighted = true;
-                    TrackerSightSound.Instance.PlaySightSound();
+                    CoilHeadEnemy enemy = hit.collider.gameObject.GetComponent<CoilHeadEnemy>();
+                    if (enemy != null)
+                    {
+                        enemy.OnPlayerSighted();
+                    }
                 }
             }
         }
+
     }
-}
+

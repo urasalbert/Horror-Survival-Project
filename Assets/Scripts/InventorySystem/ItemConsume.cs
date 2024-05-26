@@ -28,6 +28,7 @@ public class ItemConsume : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             {
                 if (isConsumable)
                 {
+                    HealEffect.Instance.PlayHealSound();
                     itemPendingConsumption = gameObject;
                     consumingFunction(healthEffect);
                 }
@@ -44,7 +45,6 @@ public class ItemConsume : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 if (isConsumable && itemPendingConsumption ==gameObject)
                 {
                         DestroyImmediate(gameObject);//fast destroy
-
                 }
             
 
@@ -54,7 +54,6 @@ public class ItemConsume : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private void consumingFunction(float healthEffect)
     {
         healthEffectCalculation(healthEffect);
-
     }
 
 

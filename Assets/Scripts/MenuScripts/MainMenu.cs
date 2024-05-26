@@ -7,8 +7,17 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGameButton()
     {
-        SceneManager.LoadScene("SampleScene");
+        StartCoroutine(ScenePlayButton());
+
     }
+    IEnumerator ScenePlayButton()
+    {
+        FadeInOutScene.Instance.FadeIn();
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene("SampleScene");
+       
+    }
+
     public void QuitGameButton()
     {
         Application.Quit();

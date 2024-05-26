@@ -27,5 +27,11 @@ public class EnemyAttack : MonoBehaviour
         soundEffectPlayer.clip = attackSound;
         soundEffectPlayer.Play();
     }
+
+    public void StopAttackSound()
+    {
+        soundEffectPlayer.Stop();
+    }
+
 }
 

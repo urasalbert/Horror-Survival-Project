@@ -6,7 +6,7 @@ public class FlashlightHandler : MonoBehaviour
 {
     public static FlashlightHandler Instance {get; private set;}
     [SerializeField] private Light FlashlightLight;
-    private bool isFlashlightOn;
+    public bool isFlashlightOn;
     public AudioClip[] audioClips;
     public AudioSource audioSource;
     private void Awake()

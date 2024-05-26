@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class PaperCollector : MonoBehaviour
 {
+    public static PaperCollector Instance { get; set; }
+
+
     public int collectedPaperCount = 0;
     public int totalPaperCount = 2;
     [SerializeField] private GameObject Player;
@@ -12,6 +15,17 @@ public class PaperCollector : MonoBehaviour
     private bool characterControllerEnabled = true;
     bool isTeleported;
 
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
     private void Start()
     {
         BlackCanvas.alpha = 0;
@@ -23,11 +37,13 @@ public class PaperCollector : MonoBehaviour
         if (other.CompareTag("Paper"))
         {
             collectedPaperCount++;
+            PaperCountText.Instance.UpdateScoreText();
             Debug.Log("Collected Paper Count: " + collectedPaperCount);
             Destroy(other.gameObject);
             PaperCollectionSound.Instance.PlayPaperSound();
         }
     }
+
 
     private void Update()
     {

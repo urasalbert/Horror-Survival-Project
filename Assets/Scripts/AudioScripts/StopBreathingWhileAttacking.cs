@@ -1,16 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class StopBreathingWhileAttacking : MonoBehaviour
 {
     public static StopBreathingWhileAttacking Instance { get; private set; }
 
-    public AudioSource AudioSource;
-    public AudioClip AudioClip;
-   
+    public AudioSource idleSoundSource;
 
-    void Awake()
+    private void Awake()
     {
         if (Instance != null && Instance != this)
         {
@@ -20,17 +16,26 @@ public class StopBreathingWhileAttacking : MonoBehaviour
         {
             Instance = this;
         }
-        DontDestroyOnLoad(AudioClip);
+
+        if (idleSoundSource == null)
+        {
+            Debug.LogWarning("StopBreathingWhileAttacking: idleSoundSource not assigned!");
+        }
     }
+
     public void PlayIdleSound()
     {
-        AudioSource.Stop();
-        AudioSource.clip = AudioClip;
-        AudioSource.Play();
-
+        if (!idleSoundSource.isPlaying)
+        {
+            idleSoundSource.Play();
+        }
     }
+
     public void StopIdleSound()
     {
-        AudioSource.Stop();
+        if (idleSoundSource.isPlaying)
+        {
+            idleSoundSource.Stop();
+        }
     }
 }

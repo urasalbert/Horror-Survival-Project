@@ -11,6 +11,12 @@ public class Bobbing : MonoBehaviour
 
     void Update()
     {
+        // Oyunun durdurulup durdurulmadýðýný kontrol et
+        if (PauseScreenManager.Instance.isGamePaused)
+        {
+            return; // Eðer oyun durduysa, bobbing iþlemini atla
+        }
+
         float waveslice = 0.0f;
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
@@ -42,6 +48,5 @@ public class Bobbing : MonoBehaviour
             v3T.y = midpoint;
         }
         transform.localPosition = v3T;
-
     }
 }

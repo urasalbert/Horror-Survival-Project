@@ -1,17 +1,15 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ChasingMusic : MonoBehaviour
 {
-
     public static ChasingMusic Instance { get; private set; }
 
     public AudioSource backgroundMusic;
     public AudioClip chaseMusic;
     public AudioClip breathingSound;
-    [SerializeField] public float fadeOutDuration = 1.0f; // Make fade duration configurable
+    [SerializeField] public float fadeOutDuration = 1.0f;
     private Coroutine fadeOutCoroutine;
     public bool isPlaying;
 
@@ -26,7 +24,6 @@ public class ChasingMusic : MonoBehaviour
             Instance = this;
         }
 
-        // Check if backgroundMusic is assigned
         if (backgroundMusic == null)
         {
             Debug.LogWarning("ChasingMusic: backgroundMusic not assigned!");
@@ -35,16 +32,26 @@ public class ChasingMusic : MonoBehaviour
 
     public void PlayChaseMusic()
     {
-        backgroundMusic.Stop();
-        backgroundMusic.clip = chaseMusic;
-        backgroundMusic.Play();
-        isPlaying = true;
+        if (!isPlaying || backgroundMusic.clip != chaseMusic)
+        {
+            backgroundMusic.Stop();
+            backgroundMusic.clip = chaseMusic;
+            backgroundMusic.Play();
+            isPlaying = true;
+
+            if (fadeOutCoroutine != null)
+            {
+                StopCoroutine(fadeOutCoroutine);
+                fadeOutCoroutine = null;
+                backgroundMusic.volume = 1f; // Reset volume
+            }
+        }
     }
 
     public void StopChaseMusic(bool fadeOut)
     {
         if (fadeOut)
-        {           
+        {
             if (fadeOutCoroutine == null)
             {
                 fadeOutCoroutine = StartCoroutine(FadeOutMusic());
@@ -53,9 +60,14 @@ public class ChasingMusic : MonoBehaviour
         else
         {
             backgroundMusic.Stop();
+            isPlaying = false;
         }
     }
 
+    public void StopChaseMusicInstant()
+    {
+        backgroundMusic.Stop();
+    }
     private IEnumerator FadeOutMusic()
     {
         float startVolume = backgroundMusic.volume;
@@ -71,7 +83,6 @@ public class ChasingMusic : MonoBehaviour
         backgroundMusic.Stop();
         isPlaying = false;
         backgroundMusic.volume = startVolume;
+        fadeOutCoroutine = null; // Reset coroutine reference
     }
 }
-
-
