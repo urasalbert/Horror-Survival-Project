@@ -11,42 +11,44 @@ public class Bobbing : MonoBehaviour
 
     void Update()
     {
-        // Oyunun durdurulup durdurulmadýðýný kontrol et
-        if (PauseScreenManager.Instance.isGamePaused)
-        {
-            return; // Eðer oyun durduysa, bobbing iþlemini atla
-        }
-
+            
         float waveslice = 0.0f;
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
-        if (Mathf.Abs(horizontal) == 0 && Mathf.Abs(vertical) == 0)
-        {
-            timer = 0.0f;
-        }
-        else
-        {
-            waveslice = Mathf.Sin(timer);
-            timer = timer + bobbingSpeed;
-            if (timer > Mathf.PI * 2)
-            {
-                timer = timer - (Mathf.PI * 2);
-            }
-        }
 
-        Vector3 v3T = transform.localPosition;
-        if (waveslice != 0)
+        if (!PauseScreenManager.Instance.isGamePaused)
         {
-            float translateChange = waveslice * bobbingAmount;
-            float totalAxes = Mathf.Abs(horizontal) + Mathf.Abs(vertical);
-            totalAxes = Mathf.Clamp(totalAxes, 0.0f, 1.0f);
-            translateChange = totalAxes * translateChange;
-            v3T.y = midpoint + translateChange;
+            if (Mathf.Abs(horizontal) == 0 && Mathf.Abs(vertical) == 0)
+            {
+                timer = 0.0f;
+            }
+            else
+            {
+                waveslice = Mathf.Sin(timer);
+                timer = timer + bobbingSpeed;
+                if (timer > Mathf.PI * 2)
+                {
+                    timer = timer - (Mathf.PI * 2);
+                }
+            }
+
+            Vector3 v3T = transform.localPosition;
+            if (waveslice != 0)
+            {
+                float translateChange = waveslice * bobbingAmount;
+                float totalAxes = Mathf.Abs(horizontal) + Mathf.Abs(vertical);
+                totalAxes = Mathf.Clamp(totalAxes, 0.0f, 1.0f);
+                translateChange = totalAxes * translateChange;
+                v3T.y = midpoint + translateChange;
+            }
+            else
+            {
+                v3T.y = midpoint;
+            }
+            transform.localPosition = v3T;
         }
-        else
-        {
-            v3T.y = midpoint;
-        }
-        transform.localPosition = v3T;
     }
-}
+           
+
+    }
+

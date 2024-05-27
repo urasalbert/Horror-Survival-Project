@@ -7,6 +7,7 @@ public class PauseScreenManager : MonoBehaviour
     [SerializeField] private GameObject PauseCanvas;
     public static PauseScreenManager Instance { get; set; }
     public bool isGamePaused;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -16,27 +17,26 @@ public class PauseScreenManager : MonoBehaviour
         else
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
     }
+
     void Start()
     {
         ResumeGame();
-        isGamePaused = false;
     }
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (IsGamePaused())
             {
-                if (IsGamePaused())
-                {
-                    ResumeGame();                   
-                    Cursor.visible = false;
-                }
-
-                else
-                    PauseGame();
+                ResumeGame();
+            }
+            else
+            {
+                PauseGame();
             }
         }
     }
@@ -49,6 +49,7 @@ public class PauseScreenManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
+
     public void ResumeGame()
     {
         Time.timeScale = 1f;
@@ -57,6 +58,7 @@ public class PauseScreenManager : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
+
     private bool IsGamePaused()
     {
         return Time.timeScale == 0f;
