@@ -12,16 +12,16 @@ public class ReturnToMainMenu : MonoBehaviour
         {
             playerEnteredTrigger = true;
             
-            StartCoroutine(ReturnToMainMenuAfterDelay(150f));
+            StartCoroutine(ReturnToMainMenuAfterDelay());
             
         }
     }
 
-    private IEnumerator ReturnToMainMenuAfterDelay(float delay)
+    private IEnumerator ReturnToMainMenuAfterDelay()
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(150f);
         FadeInOutScene.Instance.FadeIn();
-        yield return new WaitForSeconds(delay + 2);
+        yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("MainMenu");
     }
 }
